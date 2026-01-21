@@ -3,49 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILAL MD | ELITE HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+    <title>👑 BILAL MD HUB 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --primary: #00f3ff;
             --secondary: #bc13fe;
-            --accent: #ff0055;
-            --bg: #030303;
+            --bg: #000000;
+            --text-main: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: var(--bg);
-            color: #fff;
+            color: var(--text-main);
             font-family: 'Rajdhani', sans-serif;
             display: flex;
             justify-content: center;
-            overflow-x: hidden;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            padding: 20px 0;
+            background-image: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
         }
-
-        /* RGB Animated Border Line */
-        .rgb-line {
-            height: 3px;
-            width: 100%;
-            background: linear-gradient(90deg, #ff0000, #ff7700, #ffeb00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000);
-            background-size: 200%;
-            animation: rgbMove 3s linear infinite;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-        @keyframes rgbMove { 0% { background-position: 0%; } 100% { background-position: 200%; } }
 
         .container {
             width: 95%;
             max-width: 500px;
-            padding: 20px;
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            position: relative;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.95);
+            border: 3px solid var(--primary); /* Thick Border */
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            border-radius: 20px;
         }
 
         /* Top Status Bar */
@@ -54,153 +43,219 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
             padding: 15px;
-            border: 2px solid var(--primary);
-            background: rgba(0, 243, 255, 0.05);
+            border-bottom: 2px solid var(--primary);
             font-family: 'Orbitron';
-            font-size: 0.6rem;
+            font-size: 0.9rem; /* Big font */
+            font-weight: bold;
             text-align: center;
-            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+            margin-bottom: 20px;
         }
-        .top-status span { display: block; color: var(--primary); font-size: 0.8rem; margin-top: 5px; }
+        .top-status span { color: var(--primary); font-size: 1.1rem; display: block; margin-top: 5px; }
 
-        h2 {
-            font-family: 'Orbitron';
-            font-size: 1rem;
-            letter-spacing: 2px;
+        .rgb-line {
+            height: 5px; /* Thicker Line */
+            width: 100%;
+            background: linear-gradient(90deg, #ff0000, #00ff00, #00ffff, #8b00ff, #ff0000);
+            background-size: 200%;
+            animation: rgbMove 2s linear infinite;
+            margin: 25px 0;
+        }
+        @keyframes rgbMove { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem; /* Ultra Big */
+            text-align: center;
             color: var(--primary);
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--primary);
+            margin-bottom: 10px;
+            font-weight: 900;
         }
 
-        /* Buttons & Links */
+        .section-title {
+            font-family: 'Orbitron';
+            font-size: 1.3rem; /* Mote lafaz */
+            color: var(--secondary);
+            margin: 30px 0 15px;
+            text-transform: uppercase;
+            border-left: 6px solid var(--secondary);
+            padding-left: 15px;
+        }
+
+        /* Large Link Cards */
         .link-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.03);
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 1px solid #222;
+            background: #111;
+            padding: 20px; /* Big padding */
+            margin-bottom: 15px;
+            border: 2px solid #333;
             text-decoration: none;
-            color: #eee;
+            color: #fff;
             transition: 0.3s;
-            border-radius: 5px;
+            border-radius: 15px;
         }
         .link-card:hover {
-            background: rgba(0, 243, 255, 0.1);
             border-color: var(--primary);
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            background: #1a1a1a;
+            transform: scale(1.03);
+        }
+        .link-card i { font-size: 1.8rem; color: var(--primary); }
+        .link-text { 
+            flex-grow: 1; 
+            margin-left: 20px; 
+            font-size: 1.4rem; /* Big font for links */
+            font-weight: 800; 
+        }
+        .link-card span { 
+            font-size: 0.9rem; 
+            background: var(--primary); 
+            color: #000; 
+            padding: 5px 12px; 
+            font-weight: bold;
+            border-radius: 5px;
         }
 
-        /* Owner Section */
-        .owner-box {
+        /* Owner Profile */
+        .owner-section {
+            border: 2px solid var(--secondary);
+            padding: 25px;
             text-align: center;
-            padding: 20px;
-            background: rgba(188, 19, 254, 0.05);
-            border: 1px solid var(--secondary);
+            background: #0a0a0a;
+            border-radius: 20px;
         }
         .owner-img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 3px solid var(--secondary);
-            margin-bottom: 10px;
+            border: 4px solid var(--secondary);
+            margin-bottom: 15px;
             box-shadow: 0 0 20px var(--secondary);
-            object-fit: cover;
         }
-        .owner-name { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--secondary); }
+        .owner-name { font-size: 1.8rem; font-weight: 900; color: #fff; }
 
-        /* Pairing Big Button */
-        .pair-btn {
+        /* GIANT PAIR BUTTON */
+        .pair-button {
             display: block;
             width: 100%;
-            padding: 20px;
+            padding: 25px;
+            margin-top: 40px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: #000;
-            text-align: center;
             text-decoration: none;
+            text-align: center;
             font-family: 'Orbitron';
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(188, 19, 254, 0.4);
-            transition: 0.4s;
-            animation: pulse 2s infinite;
+            font-weight: 900;
+            font-size: 1.8rem; /* Very big */
+            border-radius: 15px;
+            text-shadow: 1px 1px 0px #fff;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); box-shadow: 0 0 50px var(--primary); }
-            100% { transform: scale(1); }
-        }
-
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="top-status">
-        <div>STATUS<span id="status">ACTIVE</span></div>
-        <div>UPTIME<span id="uptime">0s</span></div>
-        <div>BATTERY<span id="bat">--%</span></div>
-    </div>
-
-    <div class="rgb-line"></div>
-
-    <h2><i class="fab fa-whatsapp"></i> WhatsApp Protocols</h2>
-    <a href="https://wa.me/923078071982" class="link-card">OWNER NUMBER <span>[MESSAGE]</span></a>
-    <a href="https://whatsapp.com/channel/yourlink" class="link-card">WA CHANNEL <span>[JOIN]</span></a>
-    <a href="https://chat.whatsapp.com/yourlink" class="link-card">COMMUNITY GROUP <span>[ENTER]</span></a>
-
-    <div class="rgb-line"></div>
-
-    <h2><i class="fab fa-telegram"></i> Telegram Node</h2>
-    <a href="https://t.me/YourChannel" class="link-card">TG CHANNEL <span>[FILES]</span></a>
-    <a href="https://t.me/YourGroup" class="link-card">TG GROUP <span>[CHAT]</span></a>
-    <a href="https://t.me/YourBot" class="link-card">SYSTEM BOT <span>[START]</span></a>
-    <div class="link-card" style="cursor:default">CHANNEL ID <span style="color:var(--accent)">-100xxxxxxx</span></div>
-
-    <div class="rgb-line"></div>
-
-    <h2><i class="fas fa-user-shield"></i> Master Control</h2>
-    <div class="owner-box">
-        <img src="https://telegra.ph/file/your-pic-link.jpg" alt="Owner" class="owner-img">
-        <div class="owner-name">BILAL MD</div>
-        <p style="font-size: 0.7rem; color: #888; margin-top: 5px;">Lead Developer & Systems Architect</p>
-        
-        <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
-            <a href="https://github.com/YourUser" class="link-card" style="padding: 10px; font-size: 0.7rem;">GITHUB</a>
-            <a href="https://github.com/YourUser/Repo" class="link-card" style="padding: 10px; font-size: 0.7rem;">REPO LINK</a>
+    <div class="container">
+        <div class="top-status">
+            <div>STATUS<span style="color:#0f0">ACTIVE</span></div>
+            <div>UPTIME<span id="uptime">0s</span></div>
+            <div>BATTERY<span id="bat">--%</span></div>
         </div>
+
+        <div class="rgb-line"></div>
+
+        <h1>BILAL MD</h1>
+
+        <div class="section-title">WHATSAPP INFO</div>
+        <a href="https://wa.me/923078071982" class="link-card">
+            <i class="fab fa-whatsapp"></i>
+            <div class="link-text">Owner Number</div>
+            <span>CHAT</span>
+        </a>
+        <a href="CHANNEL_LINK" class="link-card">
+            <i class="fas fa-bullhorn"></i>
+            <div class="link-text">WA Channel</div>
+            <span>JOIN</span>
+        </a>
+
+        <div class="rgb-line"></div>
+
+                <div class="section-title">TELEGRAM PROTOCOLS</div>
+        
+        <a href="https://t.me/YOUR_TELEGRAM_USERNAME" class="link-card">
+            <i class="fas fa-user-shield"></i>
+            <div class="link-text">Telegram Owner</div>
+            <span>CONTACT</span>
+        </a>
+
+        <a href="https://t.me/YOUR_CHANNEL_LINK" class="link-card">
+            <i class="fab fa-telegram-plane"></i>
+            <div class="link-text">Official Channel</div>
+            <span>JOIN</span>
+        </a>
+
+        <a href="https://t.me/YOUR_GROUP_LINK" class="link-card">
+            <i class="fas fa-users-viewfinder"></i>
+            <div class="link-text">Public Group</div>
+            <span>ENTER</span>
+        </a>
+
+        <a href="https://t.me/YOUR_BOT_USERNAME" class="link-card">
+            <i class="fas fa-robot"></i>
+            <div class="link-text">System Bot</div>
+            <span>START</span>
+        </a>
+        ```
+
+### Is Block Mein Kya Change Kiya?
+1.  **Charon Links:** Main ne Owner, Channel, Group, aur Bot ke alag alag buttons bana diye hain.
+2.  **Unique Icons:** Har button ke liye alag icon use kiya hai (Shield for Owner, Robot for Bot etc.) taake look pro lage.
+3.  **Consistency:** Inka size aur font wahi rakha hai jo WhatsApp section ka hai, taake design mix na ho.
+
+---
+
+### Deployment Check:
+Aapki files ka final structure ab aisa hona chahiye:
+
+
+
+| File Name | Status |
+| :--- | :--- |
+| **index.html** | Isme ye naya Telegram code daal dein. |
+| **server.js** | Pehle wala hi rahega. |
+| **package.json** | Pehle wala hi rahega. |
+| **Procfile** | Pehle wala hi rahega. |
+
+**Bhai, kya ab aapke paas saare links (Owner, Channel, Group, Bot) tayyar hain jo aap ne yahan lagane hain?** Agar koi link kaam na kare to batana, main code check kar loon ga.
+
+            
+        </a>
+
+        <div class="rgb-line"></div>
+
+        <div class="section-title">DEVELOPER</div>
+        <div class="owner-section">
+            <img src="YOUR_PIC_URL" alt="Bilal" class="owner-img">
+            <div class="owner-name">BILAL</div>
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <a href="github.com/BilalTech05" class="link-card" style="flex:1; padding:10px; font-size:1rem;">GITHUB</a>
+                <a href="github.com/BilalTech05/BILAL-MD" class="link-card" style="flex:1; padding:10px; font-size:1rem;">REPO</a>
+            </div>
+        </div>
+
+        <a href="PAIRING_LINK" class="pair-button">🚀 PAIR MINI BOT</a>
+
+        <footer style="text-align: center; margin-top: 40px; font-weight: bold; color: #666;">
+            © 2026 BILAL MD ELITE SYSTEM
+        </footer>
     </div>
 
-    <div class="rgb-line"></div>
-
-    <a href="pair.html" class="pair-btn">
-        <i class="fas fa-link"></i> PAIR MINI-BOT
-    </a>
-
-    <footer style="text-align: center; margin-top: 30px; font-size: 0.6rem; color: #444; letter-spacing: 2px;">
-        POWERED BY BILAL MD TERMINAL v5.0
-    </footer>
-</div>
-
-<script>
-    // Real-time Logic
-    navigator.getBattery().then(b => {
-        const u = () => document.getElementById('bat').innerText = Math.round(b.level * 100) + "%";
-        u(); b.onlevelchange = u;
-    });
-
-    let s = 0;
-    setInterval(() => {
-        s++;
-        document.getElementById('uptime').innerText = s + "s";
-    }, 1000);
-</script>
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        navigator.getBattery().then(b => {
+            const u = () => document.getElementById('bat').innerText = Math.round(b.level * 100) + "%";
+            u(); b.onlevelchange = u;
+        });
+        let s = 0; setInterval(() => { s++; document.getElementById('uptime').innerText = s + "s"; }, 1000);
+    </script>
 </body>
-  </html>
-      
+</html>
