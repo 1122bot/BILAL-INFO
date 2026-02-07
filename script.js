@@ -1,3 +1,4 @@
+
 // ===== SERVER LIST =====
 const servers = [
     { name:"Server 1", url:"https://xd2test-bcdc85100e0f.herokuapp.com/" },
@@ -36,65 +37,63 @@ setInterval(() => {
 // ===== LOAD SERVERS =====
 
 async function loadServers(){
-const scrollPos = window.scrollY;
+
+    const scrollPos = window.scrollY;
     const area = document.getElementById("serverArea");
     if(!area) return;
 
-    if(area.innerHTML !== "") return;
+    for(let i = 1; i <= servers.length; i++){
 
-    for(let srv of servers){
+        let srv = servers[i-1];
 
-let users = 0;
-let limit = 5;
-        let status="Stopped";
-        let cls="stopped";
+        let users = 0;
+        let limit = 5;
+        let status = "Stopped";
+        let cls = "stopped";
 
         try{
+
             const r = await fetch(srv.url + "/status");
             const d = await r.json();
 
             users = d.totalActive || d.users || 0;
-limit = 5; // max users
 
-if(users >= limit){
-    status = "Full";
-    cls = "stopped";
-}
-else if(users > 0){
-    status = "Active";
-    cls = "active";
-}
-else{
-    status = "Stopped";
-    cls = "stopped";
-}
+            if(users >= limit){
+                status = "Full";
+                cls = "stopped";
+            }
+            else if(users > 0){
+                status = "Active";
+                cls = "active";
+            }
 
         } catch {}
 
-        area.innerHTML += `
-        <div class="server-box">
+        // ===== UI UPDATE =====
 
-            <div class="rgb-bar"></div>
-            <div class="server-name">${srv.name}</div>
-            <div class="rgb-bar"></div>
+        let u = document.getElementById("u"+i);
+        let l = document.getElementById("l"+i);
+        let s = document.getElementById("s"+i);
 
-            <div class="server-info">Using:
-<span id="u${servers.indexOf(srv)+1}">${users}</span> /
-<span id="l${servers.indexOf(srv)+1}">${limit}</span><br>
+        if(u) u.innerText = users;
+        if(l) l.innerText = limit;
 
-Status: <span class="${cls}">${status}</span>
-            </div>
+        if(s){
+            s.innerText = status;
+            s.className = cls;
+        }
 
-            <a href="${srv.url}" class="pair-btn">PAIR BOT</a>
-
-            <div class="rgb-bar"></div>
-
-        </div>`;
     }
+
+    // scroll restore (ONLY once)
     window.scrollTo(0, scrollPos);
+
 }
 
+// first load
 loadServers();
+
+// auto refresh
 setInterval(loadServers, 15000);
 
 async function pairClick(id, url) {
