@@ -68,20 +68,25 @@ async function loadServers(){
             }
 
         } catch {}
+ area.innerHTML += `
+        <div class="server-box">
 
-        // ===== UI UPDATE =====
+            <div class="rgb-bar"></div>
+            <div class="server-name">${srv.name}</div>
+            <div class="rgb-bar"></div>
 
-        let u = document.getElementById("u"+i);
-        let l = document.getElementById("l"+i);
-        let s = document.getElementById("s"+i);
+            <div class="server-info">Using:
+<span id="u${servers.indexOf(srv)+1}">${users}</span> /
+<span id="l${servers.indexOf(srv)+1}">${limit}</span><br>
 
-        if(u) u.innerText = users;
-        if(l) l.innerText = limit;
+Status: <span class="${cls}">${status}</span>
+            </div>
 
-        if(s){
-            s.innerText = status;
-            s.className = cls;
-        }
+            <a href="${srv.url}" class="pair-btn">PAIR BOT</a>
+
+            <div class="rgb-bar"></div>
+
+        </div>`;
 
     }
 
