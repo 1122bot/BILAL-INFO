@@ -34,8 +34,9 @@ setInterval(() => {
 
 
 // ===== LOAD SERVERS =====
-async function loadServers(){
 
+async function loadServers(){
+const scrollPos = window.scrollY;
     const area = document.getElementById("serverArea");
     if(!area) return;
 
@@ -90,7 +91,8 @@ Status: <span class="${cls}">${status}</span>
 
         </div>`;
     }
+    window.scrollTo(0, scrollPos);
 }
 
 loadServers();
-setInterval(loadServers, 5000);
+setInterval(loadServers, 15000);
