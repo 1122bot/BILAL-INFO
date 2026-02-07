@@ -3,7 +3,7 @@
 const servers = [
     { name:"Server 1", url:"https://xd2test-6079291074d4.herokuapp.com" },
     { name:"Server 2", url:"https://app2.herokuapp.com" },
-    { name:"Server 3", url:"https://app3.herokuapp.com" },
+    { name:"Server 3", url:"https://xd2test3-e815d7199e16.herokuapp.com" },
     { name:"Server 4", url:"https://app4.herokuapp.com" },
     { name:"Server 5", url:"https://app5.herokuapp.com" },
     { name:"Server 6", url:"https://app6.herokuapp.com" },
