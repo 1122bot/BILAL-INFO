@@ -77,9 +77,11 @@ else{
             <div class="server-name">${srv.name}</div>
             <div class="rgb-bar"></div>
 
-            <div class="server-info">
-                Using: ${users}/${limit}<br>
-                Status: <span class="${cls}">${status}</span>
+            <div class="server-info">Using:
+<span id="u${servers.indexOf(srv)+1}">${users}</span> /
+<span id="l${servers.indexOf(srv)+1}">${limit}</span><br>
+
+Status: <span class="${cls}">${status}</span>
             </div>
 
             <a href="${srv.url}" class="pair-btn">PAIR BOT</a>
