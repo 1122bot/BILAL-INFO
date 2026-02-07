@@ -52,16 +52,32 @@
         }
         .top-status span { color: var(--primary); font-size: 1.1rem; display: block; margin-top: 5px; }
 
-        .rgb-line {
-            height: 5px; /* Thicker Line */
-            width: 100%;
-            background: linear-gradient(90deg, #ff0000, #00ff00, #00ffff, #8b00ff, #ff0000);
-            background-size: 200%;
-            animation: rgbMove 2s linear infinite;
-            margin: 25px 0;
-        }
-        @keyframes rgbMove { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+        /* ===== RGB BAR ANIMATION (WORKING) ===== */
 
+.rgb-bar {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        #ff0000,
+        #00ff00,
+        #00ffff,
+        #ff00ff,
+        #ff0000
+    );
+    background-size: 300% 100%;
+    animation: rgbMove 2s linear infinite;
+    margin: 8px 0;
+}
+
+@keyframes rgbMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 300% 0%;
+    }
+}
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.8rem; /* Ultra Big */
