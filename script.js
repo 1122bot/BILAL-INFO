@@ -40,7 +40,7 @@ const scrollPos = window.scrollY;
     const area = document.getElementById("serverArea");
     if(!area) return;
 
-    area.innerHTML = "";
+    if(area.innerHTML !== "") return;
 
     for(let srv of servers){
 
