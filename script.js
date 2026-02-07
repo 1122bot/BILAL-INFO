@@ -96,3 +96,25 @@ Status: <span class="${cls}">${status}</span>
 
 loadServers();
 setInterval(loadServers, 15000);
+
+async function pairClick(id, url) {
+
+    try {
+
+        const r = await fetch(url + "/status");
+        const d = await r.json();
+
+        const users = d.totalActive || d.users || 0;
+        const limit = 5;
+
+        if (users >= limit) {
+            alert("Server is FULL!\nUse another server.");
+            return;
+        }
+
+        window.location.href = url;
+
+    } catch {
+        alert("⚠ Server not responding");
+    }
+}
