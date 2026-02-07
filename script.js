@@ -43,8 +43,8 @@ async function loadServers(){
 
     for(let srv of servers){
 
-        let users="--";
-        let limit="--";
+let users = 0;
+let limit = 5;
         let status="Stopped";
         let cls="stopped";
 
@@ -52,13 +52,21 @@ async function loadServers(){
             const r = await fetch(srv.url + "/status");
             const d = await r.json();
 
-            users = d.users;
-            limit = d.limit;
+            users = d.totalActive || d.users || 0;
+limit = 5; // max users
 
-            if(d.status === "active"){
-                status = "Active";
-                cls = "active";
-            }
+if(users >= limit){
+    status = "Full";
+    cls = "stopped";
+}
+else if(users > 0){
+    status = "Active";
+    cls = "active";
+}
+else{
+    status = "Stopped";
+    cls = "stopped";
+}
 
         } catch {}
 
