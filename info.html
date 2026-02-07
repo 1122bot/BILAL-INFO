@@ -181,6 +181,46 @@
 .server-btn:hover {
     transform: scale(1.05);
         }
+
+ /* ===== SERVER BOX UI ===== */
+
+.server-box {
+    background:#111;
+    padding:15px;
+    margin:20px 0;
+    border-radius:12px;
+}
+
+.rgb-bar {
+    height:4px;
+    background:linear-gradient(90deg,#ff0000,#00ff00,#00ffff,#ff00ff,#ff0000);
+    margin:8px 0;
+}
+
+.server-name {
+    font-family:Orbitron;
+    font-size:1.4rem;
+}
+
+.server-info {
+    margin-top:8px;
+    font-size:1rem;
+}
+
+.active { color:#0f0; }
+.stopped { color:#f00; }
+
+.pair-btn {
+    display:block;
+    margin-top:10px;
+    text-align:center;
+    padding:10px;
+    background:linear-gradient(45deg,#00f3ff,#bc13fe);
+    color:#000;
+    font-weight:900;
+    border-radius:8px;
+    text-decoration:none;
+}       
         
     </style>
 </head>
@@ -300,28 +340,139 @@
         </div>
 
 
-<!-- ===== BOT SERVER BUTTONS ===== -->
+<div class="section-title">SERVERS</div>
 
-<div class="rgb-line"></div>
+<!-- ===== SERVER BOXES ===== -->
 
-<div class="section-title">BOT SERVERS</div>
-
-<div class="server-section">
-<div class="server-grid">
-
-<a href="https://app1.herokuapp.com" class="server-btn">SERVER 1</a>
-<a href="https://app2.herokuapp.com" class="server-btn">SERVER 2</a>
-<a href="https://app3.herokuapp.com" class="server-btn">SERVER 3</a>
-<a href="https://app4.herokuapp.com" class="server-btn">SERVER 4</a>
-<a href="https://app5.herokuapp.com" class="server-btn">SERVER 5</a>
-<a href="https://app6.herokuapp.com" class="server-btn">SERVER 6</a>
-<a href="https://app7.herokuapp.com" class="server-btn">SERVER 7</a>
-<a href="https://app8.herokuapp.com" class="server-btn">SERVER 8</a>
-<a href="https://app9.herokuapp.com" class="server-btn">SERVER 9</a>
-<a href="https://app10.herokuapp.com" class="server-btn">SERVER 10</a>
-
+<!-- SERVER 1 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 1</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 5/10<br>
+Status: <span class="active">Active</span>
 </div>
+<a href="https://app1.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
 </div>
+
+<!-- SERVER 2 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 2</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 2/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app2.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 3 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 3</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 0/10<br>
+Status: <span class="stopped">Stopped</span>
+</div>
+<a href="https://app3.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 4 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 4</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 7/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app4.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 5 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 5</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 1/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app5.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 6 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 6</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 3/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app6.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 7 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 7</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 0/10<br>
+Status: <span class="stopped">Stopped</span>
+</div>
+<a href="https://app7.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 8 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 8</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 4/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app8.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 9 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 9</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 2/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app9.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+</div>
+
+<!-- SERVER 10 -->
+<div class="server-box">
+<div class="rgb-bar"></div>
+<div class="server-name">Server 10</div>
+<div class="rgb-bar"></div>
+<div class="server-info">
+Using: 6/10<br>
+Status: <span class="active">Active</span>
+</div>
+<a href="https://app10.herokuapp.com" class="pair-btn">PAIR BOT</a>
+<div class="rgb-bar"></div>
+    </div>
         
         <footer style="
             text-align: center; 
