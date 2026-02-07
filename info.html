@@ -474,33 +474,104 @@ Status: <span class="active">Active</span>
 <div class="rgb-bar"></div>
     </div>
         
-        <footer style="
-            text-align: center; 
-            margin-top: 50px; 
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem; /* Size adjusted to fit mobile screens */
-            font-weight: 900; 
-            text-transform: uppercase;
-            letter-spacing: 1px; /* Spacing adjusted */
-            background: linear-gradient(90deg, #ff0000, #00ff00, #00ffff, #ff00ff, #ff0000);
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rgbMove 2s linear infinite;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-            padding-bottom: 30px;
-            width: 100%;
-            word-wrap: break-word;
-        ">
-            BILAL-MD SYSTEM
-        </footer>
+      <div id="serverArea"></div>
 
-    <script>
-        navigator.getBattery().then(b => {
-            const u = () => document.getElementById('bat').innerText = Math.round(b.level * 100) + "%";
-            u(); b.onlevelchange = u;
-        });
-        let s = 0; setInterval(() => { s++; document.getElementById('uptime').innerText = s + "s"; }, 1000);
-    </script>
+<footer style="
+text-align:center;
+margin-top:50px;
+font-family:'Orbitron', sans-serif;
+font-size:1.2rem;
+font-weight:900;
+text-transform:uppercase;
+letter-spacing:1px;
+background:linear-gradient(90deg,#ff0000,#00ff00,#00ffff,#ff00ff,#ff0000);
+background-size:200%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rgbMove 2s linear infinite;
+text-shadow:0 0 8px rgba(255,255,255,0.1);
+padding-bottom:30px;
+width:100%;
+word-wrap:break-word;
+">
+BILAL-MD SYSTEM
+</footer>            
+<script>
+
+// ===== BATTERY =====
+navigator.getBattery().then(b => {
+
+    const updateBattery = () => {
+        document.getElementById('bat').innerText =
+            Math.round(b.level * 100) + "%";
+    };
+
+    updateBattery();
+    b.onlevelchange = updateBattery;
+
+});
+
+
+// ===== UPTIME =====
+let uptimeSec = 0;
+setInterval(() => {
+    uptimeSec++;
+    document.getElementById('uptime').innerText = uptimeSec + "s";
+}, 1000);
+
+
+
+async function loadServers(){
+
+    const area = document.getElementById("serverArea");
+    if(!area) return;
+
+    area.innerHTML = "";
+
+    for(let srv of servers){
+
+        let users="--";
+        let limit="--";
+        let status="Stopped";
+        let cls="stopped";
+
+        try{
+            const r = await fetch(srv.url + "/status");
+            const d = await r.json();
+
+            users = d.users;
+            limit = d.limit;
+
+            if(d.status === "active"){
+                status = "Active";
+                cls = "active";
+            }
+
+        } catch {}
+
+        area.innerHTML += `
+        <div class="server-box">
+
+            <div class="rgb-bar"></div>
+            <div class="server-name">${srv.name}</div>
+            <div class="rgb-bar"></div>
+
+            <div class="server-info">
+                Using: ${users}/${limit}<br>
+                Status: <span class="${cls}">${status}</span>
+            </div>
+
+            <a href="${srv.url}" class="pair-btn">PAIR BOT</a>
+
+            <div class="rgb-bar"></div>
+
+        </div>`;
+    }
+}
+
+loadServers();
+setInterval(loadServers, 5000);
+
+</script>
 </body>
 </html>
