@@ -495,20 +495,18 @@ width:100%;
 word-wrap:break-word;
 ">
 BILAL-MD SYSTEM
-</footer>            
+</footer>
+
 <script>
 
 // ===== BATTERY =====
 navigator.getBattery().then(b => {
-
     const updateBattery = () => {
         document.getElementById('bat').innerText =
-            Math.round(b.level * 100) + "%";
+        Math.round(b.level * 100) + "%";
     };
-
     updateBattery();
     b.onlevelchange = updateBattery;
-
 });
 
 
@@ -520,7 +518,22 @@ setInterval(() => {
 }, 1000);
 
 
+// ===== SERVER LIST =====
+const servers = [
+{ name:"Server 1", url:"https://app1.herokuapp.com" },
+{ name:"Server 2", url:"https://app2.herokuapp.com" },
+{ name:"Server 3", url:"https://app3.herokuapp.com" },
+{ name:"Server 4", url:"https://app4.herokuapp.com" },
+{ name:"Server 5", url:"https://app5.herokuapp.com" },
+{ name:"Server 6", url:"https://app6.herokuapp.com" },
+{ name:"Server 7", url:"https://app7.herokuapp.com" },
+{ name:"Server 8", url:"https://app8.herokuapp.com" },
+{ name:"Server 9", url:"https://app9.herokuapp.com" },
+{ name:"Server 10", url:"https://app10.herokuapp.com" }
+];
 
+
+// ===== AUTO SERVER DASHBOARD =====
 async function loadServers(){
 
     const area = document.getElementById("serverArea");
