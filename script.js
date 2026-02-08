@@ -1,3 +1,7 @@
+function fancyNum(n){
+    const map = ["𝟬","𝟭","𝟮","𝟯","𝟰","𝟱","𝟲","𝟳","𝟴","𝟵"];
+    return n.toString().split("").map(d => map[d]).join("");
+}
 const style = document.createElement("style");
 
 style.innerHTML = `
@@ -131,7 +135,11 @@ async function loadServers(){
             <div class="server-box">
 
                 <div class="rgb-bar"></div>
-                <div class="server-name">${srv.name}</div>
+                <div class="server-name">
+  <span class="rgb-bracket">[</span>
+  𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
+  <span class="rgb-bracket">]</span>
+</div>
                 <div class="rgb-bar"></div>
 
                 <div class="server-info">
