@@ -112,26 +112,31 @@ style.innerHTML = `
 
 document.head.appendChild(style);
 
-// ===== RGB SERVER STYLE =====
+// ===== FULL RGB SERVER STYLE BLOCK =====
 const style2 = document.createElement("style");
 
 style2.innerHTML = `
+
+/* SERVER TITLE */
 .server-name{
-  text-align:center;
-  font-size:22px;
-  font-weight:900;
-  margin:8px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  margin: 8px 0;
 }
 
+/* USING + STATUS CENTER */
 .center-info{
-  text-align:center;
-  font-weight:700;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 6px;
 }
 
+/* RGB BRACKETS */
 .rgb-bracket{
-  font-weight:900;
-  font-size:26px;
-  padding:0 6px;
+  font-weight: 900;
+  font-size: 26px;
+  padding: 0 6px;
 
   background: linear-gradient(
     90deg,
@@ -140,12 +145,50 @@ style2.innerHTML = `
     #00ffff
   );
 
-  background-size:300%;
-  -webkit-background-clip:text;
-  color:transparent;
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 
-  animation:rgbMove 3s linear infinite;
+  animation: rgbMove 3s linear infinite;
 }
+
+/* RGB BAR STYLE */
+.rgb-bar{
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
+  background-size: 300%;
+  margin: 6px 0;
+}
+
+/* TOP RGB → LEFT move */
+.server-box .rgb-bar:first-child{
+  animation: rgbLeft 3s linear infinite;
+}
+
+/* BOTTOM RGB → RIGHT move */
+.server-box .rgb-bar:last-child{
+  animation: rgbRight 3s linear infinite;
+}
+
+/* ANIMATIONS */
+@keyframes rgbMove{
+  0%{ background-position: 0% }
+  100%{ background-position: 300% }
+}
+
+@keyframes rgbRight{
+  0%{ background-position: 0% }
+  100%{ background-position: 300% }
+}
+
+@keyframes rgbLeft{
+  0%{ background-position: 300% }
+  100%{ background-position: 0% }
+}
+
 `;
 
 document.head.appendChild(style2);
