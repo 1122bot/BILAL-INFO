@@ -5,7 +5,7 @@ function fancyNum(n){
 
 /* ===== RGB BORDER ONLY ===== */
 
-const style = document.createElement("style");
+const pairstyle = document.createElement("style");
 
 style.innerHTML = `
 
@@ -51,7 +51,7 @@ style.innerHTML = `
 
 `;
 
-document.head.appendChild(style);
+document.head.appendChild(pairstyle);
 
 const centerStyle = document.createElement("style");
 
