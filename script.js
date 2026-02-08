@@ -7,7 +7,7 @@ function fancyNum(n){
 
 const pairstyle = document.createElement("style");
 
-style.innerHTML = `
+pairstyle.innerHTML = `
 
 .server-box{
     position: relative;
