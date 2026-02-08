@@ -40,6 +40,44 @@ style.innerHTML = `
 
 document.head.appendChild(style);
 
+// ===== RGB SERVER STYLE =====
+const style2 = document.createElement("style");
+
+style2.innerHTML = `
+.server-name{
+  text-align:center;
+  font-size:22px;
+  font-weight:900;
+  margin:8px 0;
+}
+
+.center-info{
+  text-align:center;
+  font-weight:700;
+}
+
+.rgb-bracket{
+  font-weight:900;
+  font-size:26px;
+  padding:0 6px;
+
+  background: linear-gradient(
+    90deg,
+    #00ffff,
+    #ff00ff,
+    #00ffff
+  );
+
+  background-size:300%;
+  -webkit-background-clip:text;
+  color:transparent;
+
+  animation:rgbMove 3s linear infinite;
+}
+`;
+
+document.head.appendChild(style2);
+
 // ===== SERVER LIST =====
 const servers = [
     { name:"Server 1", url:"https://xd2test-9672c3e51c70.herokuapp.com/" },
