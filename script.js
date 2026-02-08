@@ -2,6 +2,24 @@ function fancyNum(n){
     const map = ["𝟬","𝟭","𝟮","𝟯","𝟰","𝟱","𝟲","𝟳","𝟴","𝟵"];
     return n.toString().split("").map(d => map[d]).join("");
 }
+
+const centerStyle = document.createElement("style");
+
+centerStyle.innerHTML = `
+.server-info{
+    text-align: center;
+    font-weight: 700;
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.server-info span{
+    font-weight: 900;
+}
+`;
+
+document.head.appendChild(centerStyle);
+
 const style = document.createElement("style");
 
 style.innerHTML = `
