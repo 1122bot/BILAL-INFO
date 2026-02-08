@@ -24,12 +24,15 @@ rgbBorderFix.innerHTML = `
 
   background: linear-gradient(
     90deg,
-    #ff0000,
-    #00ffff,
-    #ff00ff,
-    #00ff00,
-    #ff0000
-  );
+    red,
+    orange,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta,
+    red
+);
 
   background-size:400%;
   animation: rgbBorderFlow 3s linear infinite;
