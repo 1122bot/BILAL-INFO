@@ -3,6 +3,50 @@ function fancyNum(n){
     return n.toString().split("").map(d => map[d]).join("");
 }
 
+const rgbBorderFix = document.createElement("style");
+
+rgbBorderFix.innerHTML = `
+
+.server-box{
+  position: relative;
+  background: #111;
+  border-radius: 18px;
+  padding: 14px;
+  z-index: 0;
+}
+
+/* RGB border layer */
+.server-box::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:20px;
+
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #00ffff,
+    #ff00ff,
+    #00ff00,
+    #ff0000
+  );
+
+  background-size:400%;
+  animation: rgbBorderFlow 3s linear infinite;
+
+  z-index:-1;
+}
+
+/* animation */
+@keyframes rgbBorderFlow{
+  0%{background-position:0%}
+  100%{background-position:400%}
+}
+
+`;
+
+document.head.appendChild(rgbBorderFix);
+
 /* ===== RGB BORDER ONLY ===== */
 
 const pairstyle = document.createElement("style");
