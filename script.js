@@ -130,8 +130,7 @@ async function pairClick(id, url) {
             return;
         }
 
-        window.location.href = url + "/pair.html?server=" + id;
-
+       window.location.href = url;
     } catch {
         alert("⚠ Server not responding");
     }
