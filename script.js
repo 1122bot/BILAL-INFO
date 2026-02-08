@@ -3,6 +3,56 @@ function fancyNum(n){
     return n.toString().split("").map(d => map[d]).join("");
 }
 
+/* ===== RGB BORDER ONLY ===== */
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+
+.server-box{
+    position: relative;
+    overflow: hidden;
+}
+
+/* moving RGB border */
+.server-box::before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        90deg,
+        #00ffff,
+        #ff00ff,
+        #00ffff
+    );
+
+    background-size: 300%;
+    animation: rgbBorderMove 3s linear infinite;
+    z-index: -1;
+}
+
+/* inner mask (so border dikhe sirf edge pe) */
+.server-box::after{
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: inherit;
+    border-radius: 16px;
+    z-index: -1;
+}
+
+/* animation */
+@keyframes rgbBorderMove{
+    0%{ background-position: 0% }
+    100%{ background-position: 300% }
+}
+
+`;
+
+document.head.appendChild(style);
+
 const centerStyle = document.createElement("style");
 
 centerStyle.innerHTML = `
