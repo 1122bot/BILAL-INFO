@@ -65,9 +65,8 @@ async function loadServers(){
                 </div>
 
                 <a href="#" onclick="pairClick(${i}, '${srv.url}')" class="pair-btn">
-                    PAIR BOT
-                </a>
-
+    PAIR BOT WITH SERVER ${i}
+</a>
                 <div class="rgb-bar"></div>
 
             </div>`;
