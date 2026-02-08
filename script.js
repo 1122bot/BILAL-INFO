@@ -158,8 +158,20 @@ style2.innerHTML = `
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
-  background-size: 300%;
+
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff8800,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+  );
+
+  background-size: 400%;
   margin: 6px 0;
 }
 
