@@ -1,3 +1,44 @@
+const style = document.createElement("style");
+
+style.innerHTML = `
+.pair-btn{
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #000;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.pair-btn::before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    background: linear-gradient(
+        90deg,
+        #00ffff,
+        #ff00ff,
+        #00ffff
+    );
+    background-size: 300%;
+    animation: rgbMove 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rgbMove{
+    0%{ background-position:0% }
+    100%{ background-position:300% }
+    }
+`;
+
+document.head.appendChild(style);
 
 // ===== SERVER LIST =====
 const servers = [
