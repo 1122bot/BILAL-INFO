@@ -79,34 +79,43 @@ async function loadServers(){
 
         let srv = servers[i-1];
 
-        let users = 0;
-        let limit = 5;
-        let status = "Stopped";
-        let cls = "stopped";
+let users = 0;
+let limit = 5;
+let status = "Stopped";
+let cls = "stopped";
 
-        try{
-            const r = await fetch(srv.url + "/status");
-            const d = await r.json();
+try {
 
-            users = d.totalActive || d.users || 0;
+    const r = await fetch(srv.url + "/status");
 
-            if(users >= limit){
-                status = "Full";
-                cls = "stopped";
-            }
-            else if(users > 0){
-                status = "Active";
-                cls = "active";
-            }
+    if (!r.ok) throw new Error("Server down");
 
-        }catch{}
+    const d = await r.json();
 
-        document.getElementById("u"+i).innerText = users;
-        document.getElementById("l"+i).innerText = limit;
+    users = d.totalActive ?? d.users ?? 0;
 
-        let s = document.getElementById("s"+i);
-        s.innerText = status;
-        s.className = cls;
+    if (users >= limit) {
+        status = "Active / Full";
+        cls = "active";
+    } else {
+        status = "Active";
+        cls = "active";
+    }
+
+} catch (err) {
+
+    status = "Stopped";
+    cls = "stopped";
+
+}
+
+// UI update
+document.getElementById("u"+i).innerText = users;
+document.getElementById("l"+i).innerText = limit;
+
+let s = document.getElementById("s"+i);
+s.innerText = status;
+s.className = cls;
     }
 }
 
@@ -122,7 +131,7 @@ async function pairClick(id, url) {
         const r = await fetch(url + "/status");
         const d = await r.json();
 
-        const users = d.totalActive || d.users || 0;
+        let users = d.totalActive ?? d.users ?? 0;
         const limit = 5;
 
         if (users >= limit) {
@@ -130,7 +139,8 @@ async function pairClick(id, url) {
             return;
         }
 
-       window.location.href = url;
+        window.location.href = url;
+
     } catch {
         alert("⚠ Server not responding");
     }
