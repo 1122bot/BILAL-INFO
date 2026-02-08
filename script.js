@@ -1,7 +1,7 @@
 
 // ===== SERVER LIST =====
 const servers = [
-    { name:"Server 1", url:"https://xd2test-6079291074d4.herokuapp.com" },
+    { name:"Server 1", url:"https://xd2test-9672c3e51c70.herokuapp.com/" },
     { name:"Server 2", url:"https://app2.herokuapp.com" },
     { name:"Server 3", url:"https://xd2test3-e815d7199e16.herokuapp.com" },
     { name:"Server 4", url:"https://app4.herokuapp.com" },
