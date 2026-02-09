@@ -383,23 +383,28 @@ setInterval(loadServers, 15000);
 async function pairClick(id, url) {
     try {
 
-        const r = await fetch(url + "/code/status");
+        // always correct endpoint
+        const statusURL = url.replace(/\/$/, "") + "/code/status";
 
-        if (!r.ok) throw new Error();
+        const r = await fetch(statusURL);
+
+        if (!r.ok) throw new Error("fetch failed");
 
         const d = await r.json();
 
-        let users = Number(d.totalActive || 0);
-        let limit = Number(d.limit || 5);
+        const users = Number(d.totalActive || 0);
+        const limit = Number(d.limit || 5);
 
         if (users >= limit) {
             alert("🚫 Server FULL!");
             return;
         }
 
-        window.location.href = url + "/pair";
+        // open pair page
+        window.location.href = url.replace(/\/$/, "") + "/pair";
 
-    } catch {
+    } catch (err) {
+        console.log("FETCH ERROR:", err);
         alert("⚠ Server not responding");
     }
 }
