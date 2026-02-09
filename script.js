@@ -342,13 +342,13 @@ let cls = "stopped";
 
 try {
 
-    const r = await fetch(srv.url + "/status");
+    const r = await fetch(srv.url + "/code/status");
 
     if (!r.ok) throw new Error("Server down");
 
     const d = await r.json();
 
-    users = d.totalActive ?? d.users ?? 0;
+    users = Number(d.totalActive || d.users || 0);
 
     if (users >= limit) {
         status = "Active / Full";
