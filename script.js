@@ -301,26 +301,37 @@ async function loadServers(){
 
             let srv = servers[i-1];
 
-            area.innerHTML += `
-            <div class="server-box">
+area.innerHTML += `
+<div class="server-box">
 
-                <div class="rgb-bar"></div>
-                <div class="server-name">
-  <span class="rgb-bracket">[</span>
-  𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
-  <span class="rgb-bracket">]</span>
-</div>
-                <div class="rgb-bar"></div>
+    <div class="rgb-bar"></div>
 
-                <div class="server-info">
-                    Using:
-                    <span id="u${i}">--</span> /
-                    <span id="l${i}">5</span><br>
+    <div class="server-name">
+        <span class="rgb-bracket">[</span>
+        SERVER ${fancyNum(i)}
+        <span class="rgb-bracket">]</span>
+    </div>
 
-                    Status:
-                    <span id="s${i}" class="stopped">Loading</span>
-                </div>
+    <div class="rgb-bar"></div>
 
+    <div class="server-info">
+        Using:
+        <span id="u${i}">--</span> /
+        <span id="l${i}">5</span><br>
+
+        Status:
+        <span id="s${i}" class="stopped">Loading</span>
+    </div>
+
+    <button class="pair-btn"
+        data-url="${srv.url}"
+        onclick="pairClick(this)">
+        PAIR BOT WITH SERVER ${i}
+    </button>
+
+    <div class="rgb-bar"></div>
+
+</div>`;
               box.innerHTML += `
 <button class="pair-btn" data-url="${srv.url}" onclick="pairClick(this)">
     PAIR BOT WITH SERVER ${i}
