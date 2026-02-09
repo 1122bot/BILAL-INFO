@@ -321,7 +321,7 @@ async function loadServers(){
                     <span id="s${i}" class="stopped">Loading</span>
                 </div>
 
-                <a href="#" onclick="pairClick(${i}, '${srv.url}')" class="pair-btn">
+               <a href="#" onclick="pairClick(${i}, '${srv.url}', event)" class="pair-btn">
     PAIR BOT WITH SERVER ${i}
 </a>
                 <div class="rgb-bar"></div>
@@ -331,64 +331,74 @@ async function loadServers(){
     }
 
     // 👉 UPDATE STATUS ONLY
+async function loadServers() {
+
     for(let i = 1; i <= servers.length; i++){
 
         let srv = servers[i-1];
 
-let users = 0;
-let limit = 5;
-let status = "Stopped";
-let cls = "stopped";
+        let users = 0;
+        let limit = 5;
+        let status = "Stopped";
+        let cls = "stopped";
 
-try {
+        try {
 
-    const r = await fetch(srv.url + "/code/status");
+            const r = await fetch(srv.url + "/code/status");
 
-    if (!r.ok) throw new Error("Server down");
+            if (!r.ok) throw new Error("Server down");
 
-    const d = await r.json();
+            const d = await r.json();
 
-    users = Number(d.totalActive || d.users || 0);
+            users = Number(d.totalActive || 0);
+            limit = Number(d.limit || 5);
 
-    if (users >= limit) {
-        status = "Active / Full";
-        cls = "active";
-    } else {
-        status = "Active";
-        cls = "active";
+            if (users >= limit) {
+                status = "Active / Full";
+                cls = "active";
+            } else {
+                status = "Active";
+                cls = "active";
+            }
+
+        } catch (err) {
+
+            console.log("STATUS ERROR:", err);
+            status = "Stopped";
+            cls = "stopped";
+
+        }
+
+        // UI update (safe)
+        const u = document.getElementById("u"+i);
+        const l = document.getElementById("l"+i);
+        const s = document.getElementById("s"+i);
+
+        if(u) u.innerText = users;
+        if(l) l.innerText = limit;
+
+        if(s){
+            s.innerText = status;
+            s.className = cls;
+        }
     }
-
-} catch (err) {
-
-    status = "Stopped";
-    cls = "stopped";
-
 }
-
-// UI update
-document.getElementById("u"+i).innerText = users;
-document.getElementById("l"+i).innerText = limit;
-
-let s = document.getElementById("s"+i);
-s.innerText = status;
-s.className = cls;
-    }
-}
-
 // first load
 loadServers();
 
 // auto refresh
 setInterval(loadServers, 15000);
-async function pairClick(id, url) {
+async function pairClick(id, url, event) {
+
+    event.preventDefault(); // reload stop
+
     try {
 
-        // always correct endpoint
         const statusURL = url.replace(/\/$/, "") + "/code/status";
 
         const r = await fetch(statusURL);
 
-        if (!r.ok) throw new Error("fetch failed");
+        if (!r.ok) throw new Error();
 
         const d = await r.json();
 
@@ -401,10 +411,12 @@ async function pairClick(id, url) {
         }
 
         // open pair page
-        window.location.href = url.replace(/\/$/, "") + "/pair";
+        window.location.href = url + "/pair";
 
     } catch (err) {
-        console.log("FETCH ERROR:", err);
+
+        console.log(err);
         alert("⚠ Server not responding");
+
     }
 }
