@@ -384,33 +384,29 @@ async function pairClick(id, url) {
 
     try {
 
-        // avoid double /code
-        const statusURL = url.includes("/code")
-            ? url + "/status"
-            : url + "/code/status";
+        // always clean URL
+        let base = url.replace(/\/code$/, "");
 
-        const r = await fetch(statusURL);
+        const r = await fetch(base + "/code/status");
 
         if (!r.ok) throw new Error();
 
         const d = await r.json();
 
-        let users = Number(d.totalActive || d.users || 0);
-        const limit = Number(d.limit || 5);
+        let users = Number(d.totalActive || 0);
+        let limit = Number(d.limit || 5);
 
         if (users >= limit) {
-
             alert("🚫 Server FULL!");
             return;
-
         }
 
-        window.location.href = url + "/pair";
+        // correct pair page
+        window.location.href = base + "/pair";
 
     } catch {
 
         alert("⚠ Server not responding");
 
     }
-
 }
