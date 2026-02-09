@@ -381,13 +381,9 @@ loadServers();
 // auto refresh
 setInterval(loadServers, 15000);
 async function pairClick(id, url) {
-
     try {
 
-        // always clean URL
-        let base = url.replace(/\/code$/, "");
-
-        const r = await fetch(base + "/code/status");
+        const r = await fetch(url + "/code/status");
 
         if (!r.ok) throw new Error();
 
@@ -401,12 +397,9 @@ async function pairClick(id, url) {
             return;
         }
 
-        // correct pair page
-        window.location.href = base + "/pair";
+        window.location.href = url + "/pair";
 
     } catch {
-
         alert("⚠ Server not responding");
-
     }
 }
