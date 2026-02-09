@@ -321,9 +321,11 @@ async function loadServers(){
                     <span id="s${i}" class="stopped">Loading</span>
                 </div>
 
-               <a href="#" onclick="pairClick(${i}, '${srv.url}', event)" class="pair-btn">
+              box.innerHTML += `
+<button class="pair-btn" data-url="${srv.url}" onclick="pairClick(this)">
     PAIR BOT WITH SERVER ${i}
-</a>
+</button>
+`;
                 <div class="rgb-bar"></div>
 
             </div>`;
@@ -388,15 +390,13 @@ loadServers();
 
 // auto refresh
 setInterval(loadServers, 15000);
-async function pairClick(id, url, event) {
+async function pairClick(btn) {
 
-    event.preventDefault(); // reload stop
+    const url = btn.dataset.url.replace(/\/$/, "");
 
     try {
 
-        const statusURL = url.replace(/\/$/, "") + "/code/status";
-
-        const r = await fetch(statusURL);
+        const r = await fetch(url + "/code/status");
 
         if (!r.ok) throw new Error();
 
@@ -415,7 +415,7 @@ async function pairClick(id, url, event) {
 
     } catch (err) {
 
-        console.log(err);
+        console.log("FETCH ERROR:", err);
         alert("⚠ Server not responding");
 
     }
