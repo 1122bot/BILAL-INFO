@@ -294,14 +294,13 @@ async function loadServers(){
     const area = document.getElementById("serverArea");
     if(!area) return;
 
-    // 👉 BUILD BOXES ONLY ONCE
     if(area.innerHTML === ""){
 
         for(let i = 1; i <= servers.length; i++){
 
             let srv = servers[i-1];
 
-area.innerHTML += `
+            area.innerHTML += `
 <div class="server-box">
 
     <div class="rgb-bar"></div>
@@ -332,19 +331,8 @@ area.innerHTML += `
     <div class="rgb-bar"></div>
 
 </div>`;
-              box.innerHTML += `
-<button class="pair-btn" data-url="${srv.url}" onclick="pairClick(this)">
-    PAIR BOT WITH SERVER ${i}
-</button>
-`;
-                <div class="rgb-bar"></div>
-
-            </div>`;
         }
     }
-
-    // 👉 UPDATE STATUS ONLY
-async function loadServers() {
 
     for(let i = 1; i <= servers.length; i++){
 
@@ -359,14 +347,14 @@ async function loadServers() {
 
             const r = await fetch(srv.url + "/code/status");
 
-            if (!r.ok) throw new Error("Server down");
+            if (!r.ok) throw new Error();
 
             const d = await r.json();
 
             users = Number(d.totalActive || 0);
             limit = Number(d.limit || 5);
 
-            if (users >= limit) {
+            if (users >= limit){
                 status = "Active / Full";
                 cls = "active";
             } else {
@@ -374,22 +362,19 @@ async function loadServers() {
                 cls = "active";
             }
 
-        } catch (err) {
+        } catch {
 
-            console.log("STATUS ERROR:", err);
             status = "Stopped";
             cls = "stopped";
 
         }
 
-        // UI update (safe)
         const u = document.getElementById("u"+i);
         const l = document.getElementById("l"+i);
         const s = document.getElementById("s"+i);
 
         if(u) u.innerText = users;
         if(l) l.innerText = limit;
-
         if(s){
             s.innerText = status;
             s.className = cls;
