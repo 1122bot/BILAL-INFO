@@ -345,7 +345,7 @@ async function loadServers(){
 
         try {
 
-            const r = await fetch(srv.url + "/code/status");
+            const r = await fetch(srv.url + "/status");
 
             if (!r.ok) throw new Error();
 
@@ -392,7 +392,7 @@ async function pairClick(btn) {
 
     try {
 
-        const r = await fetch(url + "/code/status");
+        const r = await fetch(url + "/status");
 
         if (!r.ok) throw new Error();
 
