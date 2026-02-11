@@ -334,52 +334,64 @@ async function loadServers(){
         }
     }
 
-    for(let i = 1; i <= servers.length; i++){
+ for (let i = 1; i <= servers.length; i++) {
 
-        let srv = servers[i-1];
+    let srv = servers[i-1];
 
-        let users = 0;
-        let limit = 5;
-        let status = "Stopped";
-        let cls = "stopped";
+    let users = 0;
+    let limit = 5;
+    let remaining = 0;
+    let uptime = 0;
 
-        try {
+    let status = "Stopped";
+    let cls = "stopped";
 
-            const r = await fetch(srv.url + "/status");
+    try {
 
-            if (!r.ok) throw new Error();
+        const r = await fetch(srv.url + "/status");
 
-            const d = await r.json();
+        if (!r.ok) throw new Error();
 
-            users = Number(d.totalActive || 0);
-            limit = Number(d.limit || 5);
+        const d = await r.json();
 
-            if (users >= limit){
-                status = "Active / Full";
-                cls = "active";
-            } else {
-                status = "Active";
-                cls = "active";
-            }
+        users = Number(d.totalActive || 0);
+        limit = Number(d.limit || 5);
+        remaining = Number(d.available || (limit - users));
+        uptime = Number(d.uptime || 0);
 
-        } catch {
-
-            status = "Stopped";
-            cls = "stopped";
-
+        if (users >= limit) {
+            status = "Active / Full";
+            cls = "active";
+        } else {
+            status = "Active";
+            cls = "active";
         }
 
-        const u = document.getElementById("u"+i);
-        const l = document.getElementById("l"+i);
-        const s = document.getElementById("s"+i);
+    } catch {
 
-        if(u) u.innerText = users;
-        if(l) l.innerText = limit;
-        if(s){
-            s.innerText = status;
-            s.className = cls;
-        }
+        status = "Stopped";
+        cls = "stopped";
+
     }
+
+    // ===== UI UPDATE =====
+
+    const u = document.getElementById("u" + i);
+    const l = document.getElementById("l" + i);
+    const rEl = document.getElementById("r" + i);
+    const up = document.getElementById("up" + i);
+    const s = document.getElementById("s" + i);
+
+    if (u) u.innerText = users;
+    if (l) l.innerText = limit;
+    if (rEl) rEl.innerText = remaining;
+    if (up) up.innerText = uptime + "s";
+
+    if (s) {
+        s.innerText = status;
+        s.className = cls;
+    }
+
 }
 // first load
 loadServers();
