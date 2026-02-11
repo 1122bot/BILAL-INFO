@@ -387,7 +387,7 @@ loadServers();
 // auto refresh
 setInterval(loadServers, 15000);
 async function pairClick(btn) {
-
+    
     const url = btn.dataset.url.replace(/\/$/, "");
 
     try {
@@ -398,14 +398,14 @@ async function pairClick(btn) {
 
         const d = await r.json();
 
-        const users = Number(d.totalActive || 0);
-        const limit = Number(d.limit || 5);
+const users = Number(d.totalActive || 0);
+const limit = Number(d.limit || 5);
 
-        if (users >= limit) {
-            alert("🚫 Server FULL!");
-            return;
-        }
-
+if (users >= limit) {
+    alert("🚫 Server FULL!");
+    return;
+}
+        
         // open pair page
         window.location.href = url + "/pair";
 
