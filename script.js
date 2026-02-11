@@ -314,13 +314,21 @@ async function loadServers(){
     <div class="rgb-bar"></div>
 
     <div class="server-info">
-        Using:
-        <span id="u${i}">--</span> /
-        <span id="l${i}">5</span><br>
 
-        Status:
-        <span id="s${i}" class="stopped">Loading</span>
-    </div>
+    Using:
+    <span id="u${i}">--</span> /
+    <span id="l${i}">5</span><br>
+
+    Remaining:
+    <span id="r${i}">--</span><br>
+
+    Uptime:
+    <span id="up${i}">--</span><br>
+
+    Status:
+    <span id="s${i}" class="stopped">Loading</span>
+
+</div>
 
     <button class="pair-btn"
         data-url="${srv.url}"
@@ -391,7 +399,7 @@ async function loadServers(){
         s.innerText = status;
         s.className = cls;
     }
-
+}
 }
 // first load
 loadServers();
