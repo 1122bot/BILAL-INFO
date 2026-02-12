@@ -254,7 +254,7 @@ document.head.appendChild(style2);
 
 // ===== SERVER LIST =====
 const servers = [
-    { name:"Server 1", url:"https://rjuxtest2-e26b93bdf5ed.herokuapp.com" },
+    { name:"Server 1", url:"https://rjutest-8ad145bc224a.herokuapp.com" },
     { name:"Server 2", url:"https://rjumini-e5652e891766.herokuapp.com" },
     { name:"Server 3", url:"https://xd2test3-e815d7199e16.herokuapp.com" },
     { name:"Server 4", url:"https://app4.herokuapp.com" },
@@ -316,7 +316,7 @@ async function loadServers(){
 
     <div class="server-name">
         <span class="rgb-bracket">[</span>
-       𝗕𝗜𝗟𝗔𝗟-𝗠𝗗 𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
+        𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
         <span class="rgb-bracket">]</span>
     </div>
 
