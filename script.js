@@ -286,6 +286,15 @@ setInterval(() => {
     document.getElementById("uptime").innerText = uptime + "s";
 }, 1000);
 
+function formatLiveUptime(sec){
+
+    const s = Math.floor(sec % 60);
+    const m = Math.floor(sec / 60) % 60;
+    const h = Math.floor(sec / 3600) % 24;
+    const d = Math.floor(sec / 86400);
+
+    return `${d}d ${h}h ${m}m ${s}s`;
+}
 
 // ===== LOAD SERVERS =====
 
@@ -349,7 +358,7 @@ async function loadServers(){
     let users = 0;
     let limit = 5;
     let remaining = 0;
-    let uptime = 0;
+    let serverUptime = 0;
 
     let status = "Stopped";
     let cls = "stopped";
@@ -365,7 +374,7 @@ async function loadServers(){
         users = Number(d.totalActive || 0);
         limit = Number(d.limit || 5);
         remaining = Number(d.available || (limit - users));
-        uptime = Number(d.uptime || 0);
+        serverUptime = Number(d.uptime || 0);
 
         if (users >= limit) {
             status = "Active / Full";
@@ -393,7 +402,21 @@ async function loadServers(){
     if (u) u.innerText = users;
     if (l) l.innerText = limit;
     if (rEl) rEl.innerText = remaining;
-    if (up) up.innerText = uptime + "s";
+    if (up){
+
+    // old timer band karo
+    if(up._timer) clearInterval(up._timer);
+
+    let live = serverUptime;
+
+    up.innerText = formatLiveUptime(live);
+
+    // live counter start
+    up._timer = setInterval(()=>{
+        live++;
+        up.innerText = formatLiveUptime(live);
+    },1000);
+}
 
     if (s) {
         s.innerText = status;
