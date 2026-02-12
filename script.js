@@ -324,26 +324,27 @@ async function loadServers(){
 
     <div class="server-info">
 
-LIMIT :❯ 
+LIMIT : 
 <span id="l${i}">5</span><br>
 
-USERS :❯ 
+USERS : 
 <span id="u${i}">--</span><br>
     Remaining:
     <span id="r${i}">--</span><br>
 
-    UPTIME :❯ 
-    <span id="up${i}">--</span><br>
+    STATUS : 
+    <span id="s${i}" class="stopped">LOADING</span>
+    
 
-    STATUS :❯ 
-    <span id="s${i}" class="stopped">Loading</span>
+    UPTIME : 
+    <span id="up${i}">--</span><br>
 
 </div>
 
     <button class="pair-btn"
         data-url="${srv.url}"
         onclick="pairClick(this)">
-      𝗣𝗔𝗜𝗥 𝗕𝗢𝗧 𝗪𝗜𝗧𝗛 𝗦𝗘𝗥𝗩𝗘𝗥 ${i}
+      𝗣𝗔𝗜𝗥 𝗕𝗢𝗧 𝗪𝗜𝗧𝗛 𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
     </button>
 
     <div class="rgb-bar"></div>
