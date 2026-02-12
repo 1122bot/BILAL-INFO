@@ -316,7 +316,7 @@ async function loadServers(){
 
     <div class="server-name">
         <span class="rgb-bracket">[</span>
-        𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
+       𝗕𝗜𝗟𝗔𝗟-𝗠𝗗 𝗦𝗘𝗥𝗩𝗘𝗥 ${fancyNum(i)}
         <span class="rgb-bracket">]</span>
     </div>
 
