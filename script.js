@@ -254,7 +254,7 @@ document.head.appendChild(style2);
 
 // ===== SERVER LIST =====
 const servers = [
-    { name:"Server 1", url:"https://rjuxmini-aeee02c7e2b9.herokuapp.com" },
+    { name:"Server 1", url:"https://rjuxtest2-e26b93bdf5ed.herokuapp.com" },
     { name:"Server 2", url:"https://rjumini-e5652e891766.herokuapp.com" },
     { name:"Server 3", url:"https://xd2test3-e815d7199e16.herokuapp.com" },
     { name:"Server 4", url:"https://app4.herokuapp.com" },
