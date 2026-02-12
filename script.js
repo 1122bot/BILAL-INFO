@@ -268,16 +268,27 @@ const servers = [
 
 
 // ===== BATTERY =====
-navigator.getBattery().then(b => {
-    const updateBattery = () => {
-        document.getElementById("bat").innerText =
-            Math.round(b.level * 100) + "%";
-    };
+if ("getBattery" in navigator) {
 
-    updateBattery();
-    b.onlevelchange = updateBattery;
-});
+    navigator.getBattery().then(b => {
 
+        const updateBattery = () => {
+            document.getElementById("bat").innerText =
+                Math.round(b.level * 100) + "%";
+        };
+
+        updateBattery();
+        b.onlevelchange = updateBattery;
+
+    }).catch(() => {
+        document.getElementById("bat").innerText = "N/A";
+    });
+
+} else {
+
+    document.getElementById("bat").innerText = "N/A";
+
+}
 
 // ===== UPTIME =====
 let uptime = 0;
@@ -404,20 +415,30 @@ USERS :
     if (u) u.innerText = users;
     if (l) l.innerText = limit;
     if (rEl) rEl.innerText = remaining;
+
     if (up){
 
     // old timer band karo
     if(up._timer) clearInterval(up._timer);
 
-    let live = serverUptime;
+    // ✅ sirf active server pe timer chalega
+    if(cls === "active"){
 
-    up.innerText = formatLiveUptime(live);
+        let live = serverUptime;
 
-    // live counter start
-    up._timer = setInterval(()=>{
-        live++;
         up.innerText = formatLiveUptime(live);
-    },1000);
+
+        up._timer = setInterval(()=>{
+            live++;
+            up.innerText = formatLiveUptime(live);
+        },1000);
+
+    } else {
+
+        // ❌ stopped server
+        up.innerText = "0d 0h 0m 0s";
+
+    }
 }
 
     if (s) {
