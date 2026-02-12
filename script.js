@@ -373,7 +373,7 @@ USERS :
     let remaining = 0;
     let serverUptime = 0;
 
-    let status = "Stopped";
+    let status = "STOPPED";
     let cls = "stopped";
 
     try {
@@ -390,16 +390,16 @@ USERS :
         serverUptime = Number(d.uptime || 0);
 
         if (users >= limit) {
-            status = "Active / Full";
+            status = "ACTIVE / FULL";
             cls = "active";
         } else {
-            status = "Active";
+            status = "ACTIVE";
             cls = "active";
         }
 
     } catch {
 
-        status = "Stopped";
+        status = "STOPPED";
         cls = "stopped";
 
     }
