@@ -333,7 +333,7 @@ USERS :
     <span id="r${i}">--</span><br>
 
     STATUS : 
-    <span id="s${i}" class="stopped">LOADING</span>
+    <span id="s${i}" class="stopped">LOADING</span><br>
     
 
     UPTIME : 
