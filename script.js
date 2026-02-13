@@ -254,16 +254,16 @@ document.head.appendChild(style2);
 
 // ===== SERVER LIST =====
 const servers = [
-    { name:"Server 1", url:"https://rjutest-8ad145bc224a.herokuapp.com" },
-    { name:"Server 2", url:"https://rjumini-e5652e891766.herokuapp.com" },
-    { name:"Server 3", url:"https://xd2test3-e815d7199e16.herokuapp.com" },
-    { name:"Server 4", url:"https://app4.herokuapp.com" },
-    { name:"Server 5", url:"https://app5.herokuapp.com" },
-    { name:"Server 6", url:"https://app6.herokuapp.com" },
-    { name:"Server 7", url:"https://app7.herokuapp.com" },
-    { name:"Server 8", url:"https://app8.herokuapp.com" },
-    { name:"Server 9", url:"https://app9.herokuapp.com" },
-    { name:"Server 10", url:"https://app10.herokuapp.com" }
+    { name:"Server 1", url:"https://bilal-md-wa-bot-svr1-3197e8eb0420.herokuapp.com" },
+    { name:"Server 2", url:"https://bilal-md-wa-bot-svr2-a7218d088a2d.herokuapp.com" },
+    { name:"Server 3", url:"https://bilal-md-wa-bot-svr3-d469bfd5d89f.herokuapp.com" },
+    { name:"Server 4", url:"https://bilal-md-wa-bot-svr4-4a73a8f352a2.herokuapp.com" },
+    { name:"Server 5", url:"https://bilal-md-wa-bot-svr5-bd30a89e3409.herokuapp.com" },
+    { name:"Server 6", url:"https://bilal-md-wa-bot-svr6-f6e26c86bbf3.herokuapp.com" },
+    { name:"Server 7", url:"https://bilal-md-wa-bot-svr7-ce23f98c122f.herokuapp.com" },
+    { name:"Server 8", url:"https://bilal-md-wa-bot-svr8-f4e908a46a69.herokuapp.com" },
+    { name:"Server 9", url:"https://bilal-md-wa-bot-svr9-07ebab2874cd.herokuapp.com" },
+    { name:"Server 10", url:"https://bilal-md-wa-bot-svr10-95b6a3e1a23a.herokuapp.com" }
 ];
 
 
